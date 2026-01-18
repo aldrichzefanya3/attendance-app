@@ -18,4 +18,15 @@ export class UserRepository {
       },
     });
   }
+
+  async create(payload: any) {
+      try {
+          const data  = await this.userRepository.create(payload);
+
+          await this.userRepository.insert(data);
+          return data;
+      } catch (err) { 
+          throw err
+      }
+  }
 }

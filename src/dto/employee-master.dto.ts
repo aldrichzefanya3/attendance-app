@@ -5,10 +5,12 @@ import {
   IsDateString,
   IsEnum,
   MaxLength,
+  IsUUID,
+  IsEmail,
 } from 'class-validator';
 import { Expose } from 'class-transformer';
 
-export class EmployeeMasterDto {
+export class CreateEmployeeMasterDto {
   @Expose({ name: 'first_name' })
   @IsString()
   @MaxLength(100)
@@ -18,6 +20,10 @@ export class EmployeeMasterDto {
   @IsString()
   @MaxLength(100)
   lastName: string;
+
+  @Expose({ name: 'email' })
+  @IsEmail()
+  email: string;
 
   @Expose({ name: 'phone_number' })
   @IsOptional()

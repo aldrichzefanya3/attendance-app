@@ -7,7 +7,7 @@ import {
 } from 'class-validator';
 import { Expose } from 'class-transformer';
 
-export class AttendanceDto {
+export class CreateAttendanceDto {
   @Expose({ name: 'attendance_types' })
   @IsEnum(['clock_in', 'clock_out'])
   attendanceTypes: 'clock_in' | 'clock_out';

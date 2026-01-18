@@ -1,10 +1,14 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
 import { UserProfile } from "src/entities/user-profiles.entity";
 import { Repository } from "typeorm";
 
 @Injectable()
-export class UserProfilesRepository {
-    constructor(private readonly userProfileRepository: Repository<UserProfile>) {}
+export class UserProfileRepository {
+    constructor(
+        @InjectRepository(UserProfile)
+        private readonly userProfileRepository: Repository<UserProfile>
+    ) {}
 
     async create(payload: any) {
         try {
@@ -16,4 +20,12 @@ export class UserProfilesRepository {
             throw err
         }
     }
+
+    async deleteById(id: string): Promise<void> {
+        const result = await this.userProfileRepository.delete(id);
+
+        if (result.affected === 0) {
+            throw new NotFoundException(`UserProfile with id ${id} not found`);
+        }
+  }
 }

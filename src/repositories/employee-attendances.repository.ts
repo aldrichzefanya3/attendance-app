@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AttendanceDto } from 'src/dto/empoyee-attendances.dto';
+import { CreateAttendanceDto } from 'src/dto/empoyee-attendances.dto';
 import { EmployeeAttendance } from 'src/entities/employee-attendances';
 import { FindOptionsRelations, FindOptionsSelect, Repository } from 'typeorm';
 

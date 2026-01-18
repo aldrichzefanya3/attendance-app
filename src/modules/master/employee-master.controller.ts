@@ -1,11 +1,11 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete,  Param, Post, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt/jwt-auth.guard';
 import { User } from '../auth/auth-user.decorator';
 import { RolesGuard } from '../auth/roles/roles.guard';
 import { Role } from 'src/enums/role.enum';
 import { Roles } from '../auth/roles/roles.decorator';
 import { EmployeeMasterService } from './employee-master.service';
-import { EmployeeMasterDto } from 'src/dto/employee-master.dto';
+import { CreateEmployeeMasterDto } from 'src/dto/employee-master.dto';
 
 @Controller('/master')
 export class EmployeeMasterController {
@@ -14,7 +14,7 @@ export class EmployeeMasterController {
   @Post('/create')
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.SuperUser)
-  async createDataEmployee(@User() user: any, @Body() dto: EmployeeMasterDto) {
+  async createDataEmployee(@User() user: any, @Body() dto: CreateEmployeeMasterDto) {
     return this.employeeMasterService.createDataEmployee(
       {
         ...dto,
@@ -23,10 +23,10 @@ export class EmployeeMasterController {
     );
   }
 
-//   @Get('/all')
-//   @UseGuards(JwtAuthGuard, RolesGuard)
-//   @Roles(Role.SuperUser)
-//   async getAll() {
-//       return this.attendanceService.getAllComplaint();
-//     }
+  @Delete('/delete/:id')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.SuperUser)
+  async deleteMasterEmployee(@Param('id') id: string) {
+      return this.employeeMasterService.deleteDataEmployee(id);
+    }
 }

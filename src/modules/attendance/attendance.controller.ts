@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt/jwt-auth.guard';
 import { AttendanceService } from './attendance.service';
-import { AttendanceDto } from 'src/dto/empoyee-attendances.dto';
+import { CreateAttendanceDto } from 'src/dto/empoyee-attendances.dto';
 import { User } from '../auth/auth-user.decorator';
 import { RolesGuard } from '../auth/roles/roles.guard';
 import { Role } from 'src/enums/role.enum';
@@ -14,7 +14,7 @@ export class AttendanceController {
   @Post('/create')
   @UseGuards(JwtAuthGuard)
   @Roles(Role.Public)
-  async createAttendance(@User() user: any, @Body() dto: AttendanceDto) {
+  async createAttendance(@User() user: any, @Body() dto: CreateAttendanceDto) {
     return this.attendanceService.createAttendance(
       {
         ...dto,

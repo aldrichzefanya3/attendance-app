@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { AttendanceDto } from 'src/dto/empoyee-attendances.dto';
+import { CreateAttendanceDto } from 'src/dto/empoyee-attendances.dto';
 import { EmployeeAttendanceRepository } from 'src/repositories/employee-attendances.repository';
 import { UserRepository } from 'src/repositories/users.repository';
 
@@ -10,7 +10,7 @@ export class AttendanceService {
     private readonly userRepository: UserRepository,
   ) {}
 
-  async createAttendance(payload: AttendanceDto, auth: any) {
+  async createAttendance(payload: CreateAttendanceDto, auth: any) {
     try {
       const result = await this.employeeAttendanceRepository.create({
         ...payload,
