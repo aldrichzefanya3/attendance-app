@@ -23,7 +23,7 @@ import { EmployeeAttendance } from 'src/entities/employee-attendances';
         username: config.get<string>('DB_USER'),
         password: config.get<string>('DB_PASSWORD'),
         database: config.get<string>('DB_NAME'),
-        synchronize: true,
+        synchronize: false,
         migrationsRun: false,
         entities: [User, UserProfile, EmployeeAttendance],
         logging: ['schema', 'error'],
