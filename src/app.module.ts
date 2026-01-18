@@ -5,6 +5,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { DatabaseModule } from './platform/database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import { AttendanceModule } from './modules/attendance/attendance.module';
+import { EmployeeMasterModule } from './modules/master/employee-master.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AttendanceModule } from './modules/attendance/attendance.module';
     AuthModule,
     DatabaseModule,
     AttendanceModule,
+    EmployeeMasterModule
   ],
   controllers: [AppController],
   providers: [
