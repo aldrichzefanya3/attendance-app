@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { AttendanceService } from './attendance.service';
 import { AttendanceDto } from 'src/dto/empoyee-attendances.dto';
@@ -18,4 +18,10 @@ export class AttendanceController {
       user,
     );
   }
+
+  @Get('/all')
+  @UseGuards(JwtAuthGuard)
+  async getAll() {
+      return this.attendanceService.getAllComplaint();
+    }
 }

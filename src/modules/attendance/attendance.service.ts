@@ -32,4 +32,14 @@ export class AttendanceService {
       };
     }
   }
+
+  async getAllComplaint() {
+        const result = await this.employeeAttendanceRepository.getAll();
+
+        return {
+            success: true,
+            data: result,
+            message: 'Success to get employee attendances',
+        };
+    }
 }
