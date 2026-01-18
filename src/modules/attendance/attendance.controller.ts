@@ -3,6 +3,9 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { AttendanceService } from './attendance.service';
 import { AttendanceDto } from 'src/dto/empoyee-attendances.dto';
 import { User } from '../auth/auth-user.decorator';
+import { RolesGuard } from '../auth/roles.guard';
+import { Role } from 'src/enums/role.enum';
+import { Roles } from '../auth/roles.decorator';
 
 @Controller('/attendance')
 export class AttendanceController {
@@ -10,6 +13,7 @@ export class AttendanceController {
 
   @Post('/create')
   @UseGuards(JwtAuthGuard)
+  @Roles(Role.Public)
   async createAttendance(@User() user: any, @Body() dto: AttendanceDto) {
     return this.attendanceService.createAttendance(
       {
@@ -20,7 +24,8 @@ export class AttendanceController {
   }
 
   @Get('/all')
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.SuperUser)
   async getAll() {
       return this.attendanceService.getAllComplaint();
     }

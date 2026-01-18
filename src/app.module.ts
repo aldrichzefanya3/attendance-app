@@ -17,6 +17,7 @@ import { AttendanceModule } from './modules/attendance/attendance.module';
     AttendanceModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService],
 })
 export class AppModule {}
