@@ -96,3 +96,42 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+### Entity Diagram
+erDiagram
+    USERS ||--|| USER_PROFILES : "has one"
+    USERS ||--o{ EMPLOYEE_ATTENDANCES : "records"
+
+    USERS {
+        uuid id PK
+        string email UK
+        string password
+        string role
+        datetime createdAt
+        datetime updatedAt
+    }
+
+    USER_PROFILES {
+        uuid id PK
+        uuid userId FK
+        string firstName
+        string lastName
+        string phoneNumber
+        date birthDate
+        string address
+        string department
+        date joinDate
+        enum employmentStatus
+        boolean isActive
+    }
+
+    EMPLOYEE_ATTENDANCES {
+        uuid id PK
+        uuid userId FK
+        enum attendanceTypes
+        timestamptz datetime
+        boolean isVerified
+        text photo
+        datetime createdAt
+    }
