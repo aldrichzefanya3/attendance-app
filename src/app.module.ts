@@ -14,7 +14,7 @@ import { AttendanceModule } from './modules/attendance/attendance.module';
     }),
     AuthModule,
     DatabaseModule,
-    AttendanceModule
+    AttendanceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

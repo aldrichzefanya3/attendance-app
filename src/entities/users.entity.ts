@@ -24,11 +24,11 @@ export class User {
   @Column()
   role: string;
 
-  @OneToOne(() => UserProfile, profile => profile.user)
+  @OneToOne(() => UserProfile, (profile) => profile.user)
   profile: UserProfile;
 
-  @OneToMany(() => EmployeeAttendance, attendance => attendance.user)
-  attendances: EmployeeAttendance[]
+  @OneToMany(() => EmployeeAttendance, (attendance) => attendance.user)
+  attendances: EmployeeAttendance[];
 
   @CreateDateColumn()
   createdAt: Date;

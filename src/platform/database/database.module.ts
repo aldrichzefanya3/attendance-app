@@ -9,9 +9,9 @@ import { EmployeeAttendance } from 'src/entities/employee-attendances';
 @Module({
   imports: [
     ConfigModule.forRoot({
-        isGlobal: true,
-        envFilePath: join(process.cwd(), '.env'),
-        expandVariables: true,
+      isGlobal: true,
+      envFilePath: join(process.cwd(), '.env'),
+      expandVariables: true,
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],

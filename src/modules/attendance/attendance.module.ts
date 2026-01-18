@@ -8,8 +8,8 @@ import { EmployeeAttendanceRepository } from 'src/repositories/employee-attendan
 import { UserRepository } from 'src/repositories/users.repository';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([User, EmployeeAttendance])],
-    controllers: [AttendanceController],
-    providers: [AttendanceService, EmployeeAttendanceRepository, UserRepository],
+  imports: [TypeOrmModule.forFeature([User, EmployeeAttendance])],
+  controllers: [AttendanceController],
+  providers: [AttendanceService, EmployeeAttendanceRepository, UserRepository],
 })
 export class AttendanceModule {}

@@ -6,10 +6,10 @@ import { UserRepository } from 'src/repositories/users.repository';
 export class AuthService {
   constructor(
     private readonly userRepository: UserRepository,
-    private readonly jwtService: JwtService
-) {}
+    private readonly jwtService: JwtService,
+  ) {}
 
- async validateUser(email, pass) {
+  async validateUser(email, pass) {
     const user = await this.userRepository.findOne(email);
     if (user && user.password === pass) {
       const { password, ...result } = user;
@@ -20,8 +20,8 @@ export class AuthService {
 
   async login(user) {
     const payload = {
-      sub: user.id,        
-      username: user.email, 
+      sub: user.id,
+      username: user.email,
       role: user.role,
     };
 
@@ -29,8 +29,8 @@ export class AuthService {
       access_token: this.jwtService.sign(payload),
       user: {
         id: user.id,
-        role: user.role
-      }
-    }
+        role: user.role,
+      },
+    };
   }
 }

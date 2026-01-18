@@ -11,14 +11,14 @@ import { JwtStrategy } from './jwt.strategy';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]), 
+    TypeOrmModule.forFeature([User]),
     PassportModule,
     JwtModule.register({
-      secret: "secret",
+      secret: 'secret',
       signOptions: {
-        expiresIn: '15m'
-      }
-    })
+        expiresIn: '15m',
+      },
+    }),
   ],
   controllers: [AuthController],
   providers: [AuthService, UserRepository, LocalStrategy, JwtStrategy],

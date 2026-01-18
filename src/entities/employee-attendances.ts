@@ -1,17 +1,25 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Timestamp, UpdateDateColumn } from "typeorm";
-import { User } from "./users.entity";
-
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  Timestamp,
+  UpdateDateColumn,
+} from 'typeorm';
+import { User } from './users.entity';
 
 @Entity({ name: 'employee_attendances' })
 export class EmployeeAttendance {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => User, user => user.attendances, {
+  @ManyToOne(() => User, (user) => user.attendances, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'userId' })
-  user: User
+  user: User;
 
   @Column({
     type: 'enum',

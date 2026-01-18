@@ -1,5 +1,14 @@
-import { Column, CreateDateColumn, Entity, ForeignKey, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { User } from "./users.entity";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ForeignKey,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { User } from './users.entity';
 
 @Entity({ name: 'user_profiles' })
 export class UserProfile {
@@ -7,9 +16,9 @@ export class UserProfile {
   id: string;
 
   @OneToOne(() => User, {
-    onDelete: "CASCADE",
+    onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: "user_id" }) 
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
   @Column({ length: 100 })
